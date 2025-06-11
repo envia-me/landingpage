@@ -56,11 +56,19 @@ body {
 .brand {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 .brand-logo {
-    height: 40px;
+    height: 60px;
     width: auto;
+}
+
+.brand-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.5px;
 }
 
 .nav-menu {
@@ -482,64 +490,79 @@ body {
 /* Process Section */
 .process-section {
     padding: 100px 0;
-    background: white;
+    background: var(--gray-50);
 }
 
-.process-timeline {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.process-step {
-    display: flex;
+.process-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
-    align-items: center;
+    margin-top: 4rem;
 }
 
-.step-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.process-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
     position: relative;
+    border: 1px solid var(--gray-100);
+    transition: all 0.3s ease;
 }
 
-.step-number {
-    width: 40px;
-    height: 40px;
-    background: black;
-    color: white;
-    border-radius: 50%;
+.process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gray-100);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.3rem;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+
+.card-content h3 {
+    font-size: 1.3rem;
     font-weight: 700;
+    color: black;
     margin-bottom: 1rem;
 }
 
-.step-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--gray-100);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: black;
-}
-
-.step-content h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-}
-
-.step-content p {
+.card-content p {
     color: var(--gray-500);
     line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
 }
+
+.card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-features span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-500);
+    font-size: 0.85rem;
+}
+
+.card-features i {
+    color: black;
+    font-size: 0.7rem;
+}
+
 
 /* Testimonials */
 .testimonials-section {
