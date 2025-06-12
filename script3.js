@@ -31,9 +31,8 @@ document.querySelector('.pastoral-form').addEventListener('submit', function(e) 
     const name = this.querySelector('input[type="text"]').value;
     const email = this.querySelector('input[type="email"]').value;
     const church = this.querySelectorAll('input[type="text"]')[1].value;
-    const size = this.querySelector('select').value;
     
-    if (name && email && church && size) {
+    if (name && email && church) {
         // Show blessing animation
         const button = this.querySelector('.form-submit');
         const originalContent = button.innerHTML;
@@ -278,7 +277,7 @@ function validateFormField(field, fieldName) {
 }
 
 // Add real-time validation
-document.querySelectorAll('.pastoral-form input, .pastoral-form select').forEach(field => {
+document.querySelectorAll('.pastoral-form input').forEach(field => {
     field.addEventListener('blur', function() {
         const fieldName = this.previousElementSibling.textContent;
         validateFormField(this, fieldName);
@@ -289,63 +288,3 @@ document.querySelectorAll('.pastoral-form input, .pastoral-form select').forEach
     });
 });
 
-// Add blessing quotes that appear randomly
-const blessingQuotes = [
-    '"Conheço as minhas ovelhas, e elas me conhecem" - João 10:14',
-    '"Apascenta as minhas ovelhas" - João 21:17',
-    '"O bom pastor dá a sua vida pelas ovelhas" - João 10:11',
-    '"Porque onde estiverem dois ou três reunidos em meu nome, aí estou eu no meio deles" - Mateus 18:20'
-];
-
-function showRandomBlessing() {
-    const quote = blessingQuotes[Math.floor(Math.random() * blessingQuotes.length)];
-    
-    const blessingDiv = document.createElement('div');
-    blessingDiv.innerHTML = `
-        <div style="
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #8B4513, #DAA520);
-            color: white;
-            padding: 1rem;
-            border-radius: 15px;
-            max-width: 300px;
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-            z-index: 9999;
-            font-style: italic;
-            animation: slideInRight 0.5s ease-out;
-        ">
-            <div style="margin-bottom: 0.5rem;">🙏</div>
-            ${quote}
-        </div>
-    `;
-    
-    document.body.appendChild(blessingDiv);
-    
-    setTimeout(() => {
-        blessingDiv.style.animation = 'slideOutRight 0.5s ease-in forwards';
-        setTimeout(() => blessingDiv.remove(), 500);
-    }, 5000);
-}
-
-// Add slide animations
-const slideStyle = document.createElement('style');
-slideStyle.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(slideStyle);
-
-// Show blessing quotes periodically
-setTimeout(() => {
-    showRandomBlessing();
-    setInterval(showRandomBlessing, 45000); // Every 45 seconds
-}, 10000); // First one after 10 seconds
