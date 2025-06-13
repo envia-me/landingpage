@@ -711,6 +711,10 @@ h4 { font-size: 1.25rem; font-weight: 600; }
     border-top-color: var(--secondary);
 }
 
+.testimonial-card.featured .pastor-avatar {
+    transform: scale(0.98);
+}
+
 .featured-badge {
     position: absolute;
     top: -10px;
@@ -761,6 +765,8 @@ h4 { font-size: 1.25rem; font-weight: 600; }
     justify-content: center;
     font-weight: 700;
     font-size: 1.2rem;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .pastor-details h4 {
